@@ -3,7 +3,7 @@ This module contains the models related to the mail API.
 """
 from typing import Optional, Set
 
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class SendMailRequest(BaseModel):
@@ -19,8 +19,8 @@ class SendMailRequest(BaseModel):
         - body is the content to pass for the mail
         - footer is the content located at the end of the mail. Generally, this is a signature.
     """
-    to_recipient: Set[str]
-    cc_recipient: Optional[Set[str]]
+    to_recipient: Set[EmailStr]
+    cc_recipient: Optional[Set[EmailStr]]
 
     subject: str
     body: str
