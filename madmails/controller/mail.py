@@ -1,3 +1,6 @@
+"""
+This module expose endpoints related to the mail resource.
+"""
 import fastapi
 from loguru import logger
 
