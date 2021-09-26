@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from controller import mail
 
 # Initialization of a new FastAPI app
-app = FastAPI()
+app = FastAPI(title="MadMails", description="A developer friendly service for sending mails.", version="0.1.0")
 
 # Inclusion of new routers. Same as Flask blueprints.
 app.include_router(mail.router)
