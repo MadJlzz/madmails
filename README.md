@@ -1,3 +1,4 @@
+[![CI](https://github.com/MadJlzz/madmails/actions/workflows/ci.yaml/badge.svg)](https://github.com/MadJlzz/madmails/actions/workflows/ci.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MadJlzz_madmails&metric=alert_status)](https://sonarcloud.io/dashboard?id=MadJlzz_madmails)
 
 # madmails
