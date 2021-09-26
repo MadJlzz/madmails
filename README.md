@@ -46,4 +46,4 @@ mypy $(git ls-files '*.py')
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is under the [MIT](https://choosealicense.com/licenses/mit/) license.
