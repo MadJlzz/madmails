@@ -6,3 +6,4 @@ from enum import Enum
 
 class MailSenderType(str, Enum):
     GMAIL = "gmail"
+    SENDGRID = "sendgrid"
