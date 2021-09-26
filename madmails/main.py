@@ -5,7 +5,7 @@ It runs a FastAPI webserver with uvicorn.
 import uvicorn
 from fastapi import FastAPI
 
-from controller import mail
+from madmails.controller import mail
 
 # Initialization of a new FastAPI app
 app = FastAPI(title="MadMails", description="A developer friendly service for sending mails.", version="0.1.0")
