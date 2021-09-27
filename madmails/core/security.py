@@ -1,3 +1,6 @@
+"""
+This module is about security configuration of FastAPI
+"""
 from fastapi import Security, HTTPException
 from fastapi.security import APIKeyHeader
 from pydantic import BaseSettings
@@ -11,7 +14,7 @@ class ApiSecuritySettings(BaseSettings):
     api_key: str
 
     class Config:
-        env_prefix = 'ngx_'
+        env_prefix = "ngx_"
 
 
 _DEFAULT_SECURITY_SETTINGS = ApiSecuritySettings()

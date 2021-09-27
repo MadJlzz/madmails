@@ -1,3 +1,6 @@
+"""
+This module contains middleware used in our API
+"""
 from loguru import logger
 from starlette.requests import Request
 
