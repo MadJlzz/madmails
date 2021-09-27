@@ -3,27 +3,21 @@ This module is the entrypoint of the project.
 It runs a FastAPI webserver with uvicorn.
 """
 import uvicorn
-from fastapi import FastAPI
-from loguru import logger
-from starlette.requests import Request
-from starlette.responses import Response
+from fastapi import FastAPI, Depends
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from madmails.controller import mail
+from madmails.core.middleware import catch_exceptions_middleware
+from madmails.core.security import verify_api_key
 
 # Initialization of a new FastAPI app
-app = FastAPI(title="MadMails", description="A developer friendly service for sending mails.", version="0.1.0")
+app = FastAPI(title="MadMails",
+              description="A developer friendly service for sending mails.",
+              version="0.1.0",
+              dependencies=[Depends(verify_api_key)])
 
-
-# Global exception handler to catch any unexpected exception
-# and send a pretty response.
-@app.middleware("http")
-async def catch_exceptions_middleware(request: Request, call_next):
-    try:
-        return await call_next(request)
-    except Exception as err:  # pylint: disable=broad-except
-        logger.error("something unexpected happened: {}", err)
-        return Response("Internal server error", status_code=500)
-
+# Middlewares configuration
+app.add_middleware(BaseHTTPMiddleware, dispatch=catch_exceptions_middleware)
 
 # Inclusion of new routers. Same as Flask blueprints.
 app.include_router(mail.router)
