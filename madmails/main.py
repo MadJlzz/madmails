@@ -3,14 +3,18 @@ This module is the entrypoint of the project.
 It runs a FastAPI webserver with uvicorn.
 """
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from madmails.controller import mail
 from madmails.core.middleware import catch_exceptions_middleware
+from madmails.core.security import verify_api_key
 
 # Initialization of a new FastAPI app
-app = FastAPI(title="MadMails", description="A developer friendly service for sending mails.", version="0.1.0")
+app = FastAPI(title="MadMails",
+              description="A developer friendly service for sending mails.",
+              version="0.1.0",
+              dependencies=[Depends(verify_api_key)])
 
 # Middlewares configuration
 app.add_middleware(BaseHTTPMiddleware, dispatch=catch_exceptions_middleware)
