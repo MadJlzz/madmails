@@ -20,6 +20,9 @@ jobs:
       - name: "Checkout Git repository"
         uses: actions/checkout@v2
 
+      - name "test docker"
+        run: docker --version
+
       - name: "Setup Python 3.9.6"
         uses: actions/setup-python@v2
         with:
